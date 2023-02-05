@@ -57,7 +57,7 @@ GO
 Средний балл:
 USE [LogResults]
 GO
-SELECT SUM(Grade) / 24.0 AS [AverageScore]
+SELECT SUM(Grade) / 24.0 AS [AverageScore]  // Можно было вместо 24.0 поделить на COUNT(*), но результат - целое число
 FROM [dbo].[Results]
 GO
 
