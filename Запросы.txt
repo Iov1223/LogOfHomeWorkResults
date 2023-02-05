@@ -1,4 +1,30 @@
-﻿USE [LogResults]
+Создание БД:
+USE [master]
+GO
+CREATE DATABASE [LogResults] 
+GO
+ALTER DATABASE [LogResults] SET RECOVERY SIMPLE 
+GO
+
+
+Сздание таблицы:
+USE [LogResults]
+GO
+CREATE TABLE [dbo].[Results](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[HomeWorkFrom] [nvarchar](10) NOT NULL,
+	[Passed] [nvarchar](10) NOT NULL,
+	[Grade] [int] NOT NULL,
+ CONSTRAINT [PK_Results] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+Добавление записей:
+USE [LogResults]
 GO
 SET IDENTITY_INSERT [dbo].[Results] ON
 INSERT INTO [dbo].[Results] ([Id], [HomeWorkFrom], [Passed], [Grade]) VALUES (1, N'9.11.2022', N'14.11.2022', 12)
@@ -26,5 +52,18 @@ INSERT INTO [dbo].[Results] ([Id], [HomeWorkFrom], [Passed], [Grade]) VALUES (22
 INSERT INTO [dbo].[Results] ([Id], [HomeWorkFrom], [Passed], [Grade]) VALUES (23, N'20.01.2022', N'22.01.2022', 12)
 INSERT INTO [dbo].[Results] ([Id], [HomeWorkFrom], [Passed], [Grade]) VALUES (24, N'23.01.2022', N'23.01.2022', 12)
 SET IDENTITY_INSERT [dbo].[Results] OFF
+GO
 
+Средний балл:
+USE [LogResults]
+GO
+SELECT SUM(Grade) / 24.0 AS [AverageScore]
+FROM [dbo].[Results]
+GO
+
+Запрос оценки:
+USE [LogResults]
+GO
+SELECT [Grade] FROM [dbo].[Results]
+WHERE [HomeWorkFrom] = '21.12.2022'
 GO

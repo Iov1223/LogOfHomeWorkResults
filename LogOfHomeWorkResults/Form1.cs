@@ -14,31 +14,61 @@ namespace LogOfHomeWorkResults
 {
     public partial class Form1 : Form
     {
-        private SqlConnection connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=master;Trusted_Connection=True;");
+        private SqlConnection connection;
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void labelMiddleMark_Click(object sender, EventArgs e)
-        {
-            string SqlExpression = "USE [LogResults] SELECT SUM(Grade) / 24.0 AS [AverageScore] FROM [dbo].[Results]";
-            SqlCommand command = new SqlCommand(SqlExpression, connection);
-            SqlDataReader reader = command.ExecuteReader();
-            MessageBox.Show(reader.GetValue(0).ToString());
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            connection.Open();  
+            connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=master;Trusted_Connection=True;");
         }
 
         private void comboBoxDate_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string SqlExpression = "USE [LogResults] SELECT SUM(Grade) / 24.0 AS [AverageScore] FROM [dbo].[Results]";
-            SqlCommand command = new SqlCommand(SqlExpression, connection);
-            SqlDataReader reader = command.ExecuteReader();
-            MessageBox.Show(reader.GetValue(0).ToString());
+            try
+            {
+                string _date = comboBoxDate.Text;
+                string _SqlExpression = $"USE [LogResults] SELECT [Grade] FROM [dbo].[Results] WHERE [HomeWorkFrom] = '{_date}'";
+                SqlCommand command = new SqlCommand(_SqlExpression, connection);
+                connection.Open();
+                var reader = command.ExecuteScalar();
+                if (reader != null)
+                {
+                    textBoxMark.Text = reader.ToString();
+                    connection.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось получить данные.");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Не удалось получить данные.");
+            }
+        }
+
+        private void buttonMiddleMark_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string _SqlExpression = "USE [LogResults] SELECT SUM(Grade) / 24.0 AS [AverageScore] FROM [dbo].[Results]";
+                SqlCommand command = new SqlCommand(_SqlExpression, connection);
+                connection.Open();
+                var reader = command.ExecuteScalar();
+                if (reader != null)
+                {
+                    double _tmp = Convert.ToDouble(reader);
+                    buttonMiddleMark.Text = "Средний балл за курс \"Введение в WF и WPF\" = " + _tmp.ToString("0.0");
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось получить данные.");
+                }
+                connection.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Не удалось получить данные.");
+            }
         }
     }
 }

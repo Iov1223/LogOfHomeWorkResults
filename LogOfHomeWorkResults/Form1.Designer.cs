@@ -30,8 +30,7 @@
         {
             this.comboBoxDate = new System.Windows.Forms.ComboBox();
             this.textBoxMark = new System.Windows.Forms.TextBox();
-            this.labelMiddleMark = new System.Windows.Forms.Label();
-            this.labelMark = new System.Windows.Forms.Label();
+            this.buttonMiddleMark = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxDate
@@ -67,7 +66,7 @@
             "23.01.2022"});
             this.comboBoxDate.Location = new System.Drawing.Point(12, 12);
             this.comboBoxDate.Name = "comboBoxDate";
-            this.comboBoxDate.Size = new System.Drawing.Size(323, 27);
+            this.comboBoxDate.Size = new System.Drawing.Size(371, 27);
             this.comboBoxDate.TabIndex = 3;
             this.comboBoxDate.Text = "Выбрать дату домашнего задания:";
             this.comboBoxDate.SelectedIndexChanged += new System.EventHandler(this.comboBoxDate_SelectedIndexChanged);
@@ -76,7 +75,7 @@
             // 
             this.textBoxMark.BackColor = System.Drawing.Color.White;
             this.textBoxMark.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxMark.Location = new System.Drawing.Point(373, 12);
+            this.textBoxMark.Location = new System.Drawing.Point(408, 12);
             this.textBoxMark.Name = "textBoxMark";
             this.textBoxMark.ReadOnly = true;
             this.textBoxMark.Size = new System.Drawing.Size(81, 27);
@@ -84,42 +83,31 @@
             this.textBoxMark.Text = "Оценка";
             this.textBoxMark.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // labelMiddleMark
+            // buttonMiddleMark
             // 
-            this.labelMiddleMark.AutoSize = true;
-            this.labelMiddleMark.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelMiddleMark.Location = new System.Drawing.Point(12, 71);
-            this.labelMiddleMark.Name = "labelMiddleMark";
-            this.labelMiddleMark.Size = new System.Drawing.Size(386, 19);
-            this.labelMiddleMark.TabIndex = 5;
-            this.labelMiddleMark.Text = "Средний балл за курс \"Введение в WF и WPF\" =";
-            this.labelMiddleMark.Click += new System.EventHandler(this.labelMiddleMark_Click);
-            // 
-            // labelMark
-            // 
-            this.labelMark.AutoSize = true;
-            this.labelMark.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelMark.Location = new System.Drawing.Point(430, 71);
-            this.labelMark.Name = "labelMark";
-            this.labelMark.Size = new System.Drawing.Size(0, 19);
-            this.labelMark.TabIndex = 6;
-            this.labelMark.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMiddleMark.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonMiddleMark.Location = new System.Drawing.Point(12, 64);
+            this.buttonMiddleMark.Name = "buttonMiddleMark";
+            this.buttonMiddleMark.Size = new System.Drawing.Size(477, 32);
+            this.buttonMiddleMark.TabIndex = 7;
+            this.buttonMiddleMark.Text = "Средний балл за курс \"Введение в WF и WPF\"=";
+            this.buttonMiddleMark.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonMiddleMark.UseVisualStyleBackColor = true;
+            this.buttonMiddleMark.Click += new System.EventHandler(this.buttonMiddleMark_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(485, 115);
-            this.Controls.Add(this.labelMark);
-            this.Controls.Add(this.labelMiddleMark);
+            this.ClientSize = new System.Drawing.Size(506, 115);
+            this.Controls.Add(this.buttonMiddleMark);
             this.Controls.Add(this.textBoxMark);
             this.Controls.Add(this.comboBoxDate);
-            this.MaximumSize = new System.Drawing.Size(503, 162);
-            this.MinimumSize = new System.Drawing.Size(503, 162);
+            this.MaximumSize = new System.Drawing.Size(524, 162);
+            this.MinimumSize = new System.Drawing.Size(524, 162);
             this.Name = "Form1";
             this.Text = "Проверка успеваемости";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,8 +116,7 @@
         #endregion
         private System.Windows.Forms.ComboBox comboBoxDate;
         private System.Windows.Forms.TextBox textBoxMark;
-        private System.Windows.Forms.Label labelMiddleMark;
-        private System.Windows.Forms.Label labelMark;
+        private System.Windows.Forms.Button buttonMiddleMark;
     }
 }
 
